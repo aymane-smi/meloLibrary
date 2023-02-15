@@ -6,3 +6,5 @@
 
  - use case digram:
     ![use case](use-case.png)
+ -  class diagram:
+    ![class](class.png)
