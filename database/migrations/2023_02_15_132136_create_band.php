@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('band', function (Blueprint $table) {
             $table->id();
+            $table->string("image");
+            $table->string("name");
+            $table->string("country");
+            $table->date("creation_date");
             $table->timestamps();
         });
     }

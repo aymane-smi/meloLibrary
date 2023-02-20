@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('favorite', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("client_id");
+            $table->foreignId("music_id");
             $table->timestamps();
         });
     }
