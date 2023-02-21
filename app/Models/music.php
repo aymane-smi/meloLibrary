@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class music_category extends Model
+class music extends Model
 {
     use HasFactory;
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, "category_music");
+        return $this->belongsToMany(categories::class);
+    }
+
+    public function artists()
+    {
+        return $this->belongsToMany(Artist::class);
     }
 }
