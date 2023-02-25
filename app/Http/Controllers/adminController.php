@@ -80,11 +80,13 @@ class adminController extends Controller
             "bands" => $artist->bands(),
             "songs" => $artist->songs()->paginate(10),
         ];
-        return view("admin.artits", $result);
+        return view("admin.artist", $result);
     }
 
     public function showArtists()
     {
+        $artists = artist::all()->paginate(10);
+        return view("admin.artists", $artists);
     }
 
     //handle band logic
