@@ -18,4 +18,14 @@ class music extends Model
     {
         return $this->belongsToMany(Artist::class);
     }
+
+    public function comments()
+    {
+        return $this->belongsToMany(comment::class);
+    }
+
+    public function writers()
+    {
+        return $this->belongsToMany(writer::class);
+    }
 }
