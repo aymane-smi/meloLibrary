@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->string("full_name");
+            $table->unsignedBigInteger("band_id");
+            $table->foreign("band_id")->references("id")->on("band")->onDelete("cascade");
             $table->timestamps();
         });
     }

@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('users');
+
         Schema::create('music', function (Blueprint $table) {
             $table->id();
             $table->string("image");
             $table->string("title");
+            $table->string("song");
+            $table->time("duration");
             $table->timestamps();
         });
     }

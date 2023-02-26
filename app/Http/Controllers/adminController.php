@@ -6,31 +6,33 @@ use App\Models\artist;
 use App\Models\band;
 use App\Models\category;
 use App\Models\music;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
 
 class adminController extends Controller
 {
-    //
+    //dashboard
 
     public function index()
     {
         $result = [
-            "created_songs" => music::count()->get(),
-            "created_artists" => artist::count()->get(),
-            "created_band" => band::count()->get(),
-            "top_songs" => music::select('music.*')->join('music_rate', 'music.id', '=', 'music_rate.music_id')
-                ->groupBy("music.*")
-                ->orderBy("rate")
+            "created_songs" => music::count(),
+            "created_artists" => artist::count(),
+            "created_band" => band::count(),
+            "top_songs" => music::select('music.*')->join('client_rate', 'music.id', '=', 'client_rate.music_id')
+                ->orderBy("client_rate.rating", "desc")
                 ->limit(4)
                 ->get(),
-            "top_categories" => category::all()->orderBy("selected"),
+            "top_categories" => category::all()->sortByDesc("selected"),
             "top_artists" => artist::select("artist.*")->join('artist_music', 'artist.id', '=', 'artist_music.artist_id')
-                ->join("music_rate", 'music.id', '=', 'artist_music.music_id')
-                ->groupBy("music_rate.rate")
+                ->join("client_rate", 'client_rate.music_id', '=', 'artist_music.music_id')
+                ->orderBy("client_rate.rating", "desc")
                 ->limit(4)
                 ->get(),
         ];
-        return view("admin.index", $result);
+        //dd($result);
+        return view("admin.index", ["results" => $result]);
     }
 
 
@@ -48,6 +50,32 @@ class adminController extends Controller
             "rating" => music::select("SUM(rating) as total, AVG(rating) as rating")->where('music_id', '=', $song->id)->get(),
         ];
         return view("admin.song", $result);
+    }
+
+    public function createSong(Request $req)
+    {
+        try {
+            $req->validate([
+                "title" => "filled|required",
+                "duration" => "required|date_format:H:i",
+                "image" => "required|image",
+                "artist" => "array:required_without:band",
+                "band" => "array:required_without:artist",
+                "writers" => "array:required",
+                "song" => ["required", File::types(['mp3', 'wav'])],
+            ]);
+
+            $name = now()->timestamp . "_" . $req->input("image")->getClientOriginalName();
+            $req->file("image")->storeAs('image', $name, "public");
+            $new_song = music::create([
+                "title" => $req->input("title"),
+                "duration" => $req->input("duration"),
+                "image" => $name,
+            ]);
+            // if($req->input("artist"))
+        } catch (Exception $err) {
+            echo $err;
+        }
     }
 
     public function showSongs()
@@ -91,11 +119,22 @@ class adminController extends Controller
 
     //handle band logic
 
-    public function showBand()
+    public function showBand($id)
     {
+        $band = band::find($id);
+        $result = [
+            "band" => $band,
+            "members" => $band->members(),
+            "artists" => $band->artists(),
+            "songs" => $band->songs(),
+        ];
+
+        return view("admin.band", $result);
     }
 
     public function showBands()
     {
+        $band = band::all()->paginate(10);
+        return view("admins.bands", $band);
     }
 }

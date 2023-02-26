@@ -9,6 +9,8 @@ class artist extends Model
 {
     use HasFactory;
 
+    protected $table = "artist";
+
     public function bands()
     {
         return $this->belongsToMany(band::class);
