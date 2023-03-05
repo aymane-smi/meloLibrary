@@ -6,18 +6,19 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class categories extends Component
+class artists extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $categoriesNbr;
-    public $categories;
-    public function __construct($categoriesNbr, $categories)
+
+    public $artistsNbr;
+    public $artists_;
+    public function __construct($artistsNbr, $artists_)
     {
         //
-        $this->categories = $categories;
-        $this->categoriesNbr = $categoriesNbr;
+        $this->artistsNbr = $artistsNbr;
+        $this->artists_;
     }
 
     /**
@@ -25,6 +26,6 @@ class categories extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.categories');
+        return view('components.artists');
     }
 }

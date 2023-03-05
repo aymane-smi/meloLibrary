@@ -11,13 +11,13 @@ class songs extends Component
     /**
      * Create a new component instance.
      */
-    public $songs_nbr;
+    public $songsNbr;
     public $songs;
-    public function __construct($songs_nbr, $songs)
+    public function __construct($songsNbr, $songs)
     {
         //
         $this->songs = $songs;
-        $this->songs_nbr = $$songs_nbr;
+        $this->songsNbr = $$songsNbr;
     }
 
     /**

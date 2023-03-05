@@ -20,6 +20,7 @@ class adminController extends Controller
             "created_songs" => music::count(),
             "created_artists" => artist::count(),
             "created_band" => band::count(),
+            "created_categories" => category::count(),
             "top_songs" => music::select('music.*')->join('client_rate', 'music.id', '=', 'client_rate.music_id')
                 ->orderBy("client_rate.rating", "desc")
                 ->limit(4)
@@ -113,8 +114,8 @@ class adminController extends Controller
 
     public function showArtists()
     {
-        $artists = artist::all()->paginate(10);
-        return view("admin.artists", $artists);
+        $artists = artist::paginate(10);
+        return view("admin.showArtists", ["artists" => $artists]);
     }
 
     //handle band logic

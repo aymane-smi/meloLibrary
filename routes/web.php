@@ -18,5 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get("/Dashboard", [adminController::class, 'index']);
+Route::prefix("Dashboard")->group(function () {
+    Route::get("/", [adminController::class, 'index']);
+    Route::get("/artists", [adminController::class, "showArtists"]);
+});
