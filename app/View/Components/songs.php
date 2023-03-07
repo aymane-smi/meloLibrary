@@ -17,7 +17,7 @@ class songs extends Component
     {
         //
         $this->songs = $songs;
-        $this->songsNbr = $$songsNbr;
+        $this->songsNbr = $songsNbr;
     }
 
     /**

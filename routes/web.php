@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::prefix("Dashboard")->group(function () {
     Route::get("/", [adminController::class, 'index']);
     Route::get("/artists", [adminController::class, "showArtists"]);
+    Route::post("/addArtist", [adminController::class, "addArtist"]);
 });

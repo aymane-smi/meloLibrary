@@ -115,7 +115,26 @@ class adminController extends Controller
     public function showArtists()
     {
         $artists = artist::paginate(10);
-        return view("admin.showArtists", ["artists" => $artists]);
+        return view("admin.showArtists", ["artists" => $artists, "artits_nbr" => artist::all()->count(), "bands" => band::all()]);
+    }
+
+    public function addArtist(Request $req){
+        $req->validate([
+            "name" => "filled|required",
+            "country" => "filled|required",
+            "birthday" => "date_format:d-m-Y|required",
+            "artist_image" => "image|required",
+            "band" => "integer",
+        ]);
+        $name = now()->timestamp . "_" . $req->input("artist_image")->getClientOriginalName();
+        $req->file("artist_image")->storeAs('image', $name, "public");
+        artist::create([
+            "name" => $req->name,
+            "country" => $req->country,
+            "birthday" => $req->birthday,
+            "artist_image" => $name,
+        ]);
+        return redirect("/Dashboard/artists");
     }
 
     //handle band logic
