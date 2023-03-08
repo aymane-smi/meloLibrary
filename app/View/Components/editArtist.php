@@ -21,6 +21,6 @@ class editArtist extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.edit-artist');
+        return view('components.editArtist');
     }
 }
