@@ -3,7 +3,7 @@
         <div class="w-full flex justify-end items-center">
             <i class="fa-solid fa-xmark p-3 hover:bg-white hover:text-[#0F1314] rounded-lg" id="close-addArtist"></i>
         </div>
-        <form method="POST" action="/Dashboard/addArtist" class="p-4" data-setp="1">
+        <form method="POST" action="/Dashboard/addArtist" class="p-4" enctype="multipart/form-data">
             @csrf
             <x-artistPersonalInfoInput />
             <x-artistBand />

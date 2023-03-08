@@ -6,6 +6,8 @@
         <a href="/Dashboard/artists" class="text-white pr-2">show all</a>
     </div>
     <div class="mt-4">
-        <x-artist />
+        @foreach($artists as $artist)
+            <x-artist :artist="$artist"/>
+        @endforeach
     </div>
 </div>

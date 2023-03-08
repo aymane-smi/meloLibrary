@@ -122,17 +122,17 @@ class adminController extends Controller
         $req->validate([
             "name" => "filled|required",
             "country" => "filled|required",
-            "birthday" => "date_format:d-m-Y|required",
+            "birthday" => "date_format:Y-m-d|required",
             "artist_image" => "image|required",
-            "band" => "integer",
+            //"band" => "integer",
         ]);
-        $name = now()->timestamp . "_" . $req->input("artist_image")->getClientOriginalName();
-        $req->file("artist_image")->storeAs('image', $name, "public");
+        $name = now()->timestamp . "_" . $req->artist_image->getClientOriginalName();
+        $req->artist_image->storeAs('public/artists', $name);
         artist::create([
             "name" => $req->name,
             "country" => $req->country,
             "birthday" => $req->birthday,
-            "artist_image" => $name,
+            "image" => $name,
         ]);
         return redirect("/Dashboard/artists");
     }

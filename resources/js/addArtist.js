@@ -10,7 +10,7 @@ let step = 1;
 close.addEventListener("click", ()=>{
     form.classList.remove("flex");
     form.classList.add("hidden");
-    next = 1;
+    next.classList.remove("hidden");
 });
 
 add.addEventListener("click", ()=>{
@@ -21,4 +21,5 @@ add.addEventListener("click", ()=>{
 next.addEventListener("click", ()=>{
     step1.classList.add("hidden");
     step2.classList.remove("hidden");
+    next.classList.add("hidden");
 });
