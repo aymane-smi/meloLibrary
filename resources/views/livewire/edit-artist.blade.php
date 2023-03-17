@@ -1,9 +1,6 @@
 <div x-data x-show="$store.edit.open" class="w-screen h-full absolute z-50 flex justify-center items-center bg-black/70"
-    wire:model="artist_id">
+    x-effect="$wire.set('artist_id', $store.edit.id)">
     <p class="text-white" x-data x-text="$store.edit.id"></p>
-    <pre class="text-white">
-        {{ var_dump($id) }}
-    </pre>
     <div class="bg-[#0F1314] p-2 rounded-md text-white shadow-2xl border-1 border-white w-[300px]">
         <div x-data class="w-full flex justify-end items-center" @click="$store.edit.toggle()">
             <i class="fa-solid fa-xmark p-3 hover:bg-white hover:text-[#0F1314] rounded-lg"></i>

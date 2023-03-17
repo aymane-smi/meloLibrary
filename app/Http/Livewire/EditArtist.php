@@ -10,9 +10,9 @@ class EditArtist extends Component
 {
     public $artist_id;
 
-    public function changeIdToOne()
+    public function changeId($id)
     {
-        $this->artist_id = 1;
+        $this->artist_id = $id;
     }
     public function render()
     {
