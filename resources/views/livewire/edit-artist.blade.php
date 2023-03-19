@@ -1,5 +1,5 @@
 <div x-data x-show="$store.edit.open" class="w-screen h-full absolute z-50 flex justify-center items-center bg-black/70"
-    x-effect="$wire.set('artist_id', $store.edit.id)">
+    x-effect="$wire.change($store.edit.id)">
     <p class="text-white" x-data x-text="$store.edit.id"></p>
     <div class="bg-[#0F1314] p-2 rounded-md text-white shadow-2xl border-1 border-white w-[300px]">
         <div x-data class="w-full flex justify-end items-center" @click="$store.edit.toggle()">

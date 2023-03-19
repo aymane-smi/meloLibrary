@@ -22,6 +22,6 @@ class artist extends Model
 
     public function songs()
     {
-        return $this->belongsToMany(msuic::class);
+        return $this->belongsToMany(music::class);
     }
 }

@@ -8,19 +8,15 @@ use Livewire\Component;
 
 class EditArtist extends Component
 {
-    public $artist_id;
+    public $artist;
 
-    public function changeId($id)
+    public function change($id)
     {
-        $this->artist_id = $id;
+        $this->artist = artist::find($id);
     }
     public function render()
     {
 
-        return view('livewire.edit-artist', [
-            "id" => $this->artist_id,
-            "artist" => artist::find($this->artist_id),
-            "bands" => band::all(),
-        ]);
+        return view('livewire.edit-artist');
     }
 }
