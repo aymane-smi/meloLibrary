@@ -10,19 +10,19 @@
         </a>
         <a href="/Dashboard/add-song"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
-            <i class="fa-solid fa-music"></i> add new song
+            <i class="fa-solid fa-music"></i> songs
         </a>
         <a href="/Dashboard/add-category"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
-            <i class="fa-regular fa-rectangle-list"></i> add new category
+            <i class="fa-regular fa-rectangle-list"></i> categories
         </a>
         <a href="/Dashboard/add-band"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
-            <i class="fa-solid fa-people-group"></i> add new band
+            <i class="fa-solid fa-people-group"></i> bands
         </a>
         <a href="/Dashboard/add-members"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
-            <i class="fa-solid fa-person"></i> add new member
+            <i class="fa-solid fa-person"></i> members
         </a>
     </div>
     <div class="text-[#3E4143] flex flex-col justify-center items-start gap-10 text-lg w-full pl-3">

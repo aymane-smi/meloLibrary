@@ -8,6 +8,7 @@ use App\Models\category;
 use App\Models\music;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 
 class adminController extends Controller
@@ -119,7 +120,7 @@ class adminController extends Controller
     }
 
     public function addArtist(Request $req){
-        $req->validate([
+        $validate = $req->validate([
             "name" => "filled|required",
             "country" => "filled|required",
             "birthday" => "date_format:Y-m-d|required",
@@ -134,6 +135,15 @@ class adminController extends Controller
             "birthday" => $req->birthday,
             "image" => $name,
         ]);
+        return response()->json([
+            "message" => "artist created",
+        ], 200);
+    }
+
+    public function deleteArtist($id){
+        $tmp = artist::find($id);
+        Storage::delete("artists/".$tmp->image_artist);
+        $tmp->delete();
         return redirect("/Dashboard/artists");
     }
 

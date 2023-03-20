@@ -3,11 +3,12 @@
         <div class="w-full flex justify-end items-center">
             <i class="fa-solid fa-xmark p-3 hover:bg-white hover:text-[#0F1314] rounded-lg" id="close-addArtist"></i>
         </div>
-        <form method="POST" action="/Dashboard/addArtist" class="p-4" enctype="multipart/form-data">
+        <form method="POST" action="/Dashboard/addArtist" class="p-4" enctype="multipart/form-data" id="addArtist_form">
             @csrf
             <x-artistPersonalInfoInput />
-            <x-artistBand />
-            <div class="cursor-pointer bg-blue-500 text-white rounded-md p-2 float-right mt-3" id="next">next</div>
+            <select class="p-3 w-full bg-white border-3 rounded-md text-black text-center border-[#15181b] outline-none mt-3" name="band">
+            </select>
+            <button class="w-full p-2 mt-3 rounded-md bg-green-500 text-white">add new artist</button>
         </form>
     </div>
 </div>

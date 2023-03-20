@@ -1,9 +1,6 @@
 <x-header title="artists" />
 <x-admin_sidebar />
 <x-addArtist />
-@livewire('edit-artist')
-<pre class="text-white">
-</pre>
 <div class="flex flex-col mt-8 w-full pl-3">
     <div class="flex justify-between items-center">
         <h2 class="text-[30px] text-white">Available Artists({{ $artits_nbr }}) </h2>
