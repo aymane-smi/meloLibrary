@@ -5,7 +5,6 @@ const add = document.querySelector("#addArtist_btn");
 const step1 = document.querySelector("#step1");
 const step2 = document.querySelector("#step2");
 const next = document.querySelector("#next");
-let step = 1;
 
 close.addEventListener("click", ()=>{
     form.classList.remove("flex");

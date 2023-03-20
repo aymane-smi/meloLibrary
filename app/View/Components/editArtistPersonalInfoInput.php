@@ -23,6 +23,6 @@ class editArtistPersonalInfoInput extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.edit-artist-personal-info-input');
+        return view('components.editArtistPersonalInfoInput');
     }
 }

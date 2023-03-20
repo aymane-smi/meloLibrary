@@ -1,14 +1,14 @@
-<div>
+<div id="step1-edit">
     <div class="flex flex-col">
         <label for="name">name</label>
         <input type="text" name="name" id="name"
-            value="{{ print_r($artist === null ? '' : substr($artist->name, 0, -1) }}"
+            value="{{ print_r($artist === null ? '' : substr($artist->name, 0, -1)) }}"
             class="rounded-md mt-2 bg-transparent border-4 p-2 border-[#15181b] outline-none" />
     </div>
     <div class="flex flex-col mt-3">
         <label for="country">country</label>
         <input type="text" name="country" id="country"
-        value="{{ print_r($artist === null ? '' : substr($artist->country, 0, -1) }}"
+        value="{{ print_r($artist === null ? '' : substr($artist->country, 0, -1)) }}"
             class="rounded-md mt-2 bg-transparent border-4 p-2 border-[#15181b] outline-none" />
     </div>
     <div class="flex flex-col mt-3">

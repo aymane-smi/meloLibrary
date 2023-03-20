@@ -1,5 +1,6 @@
 <x-header title="Dashboard" />
 <x-admin_sidebar />
+<button onclick="Livewire.emit('openModal', 'hello-world')">Edit User</button>
 <div class="width pl-3 pt-5 max-h-screen overflow-y-scroll">
     <x-songs :songsNbr="$results['created_songs']" :songs="$results['top_songs']" />
     <x-categories :categoriesNbr="$results['created_categories']" :categories="$results['top_categories']" />

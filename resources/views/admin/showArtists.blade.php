@@ -16,4 +16,5 @@
     </div>
 </div>
 @vite('resources/js/addArtist.js')
+@vite('resources/js/editArtist.js')
 <x-footer />

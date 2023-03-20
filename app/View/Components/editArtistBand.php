@@ -12,10 +12,13 @@ class editArtistBand extends Component
      * Create a new component instance.
      */
     public $bands;
-    public function __construct($bands)
+    public $id;
+    public function __construct($bands, $id)
     {
         //
         $this->bands = $bands;
+
+        $this->id = $id;
     }
 
     /**
@@ -23,6 +26,6 @@ class editArtistBand extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.edit-artist-band');
+        return view('components.editArtistBand');
     }
 }
