@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -19,6 +20,32 @@ class Authentification extends Controller
             "password" => "filled|required|min:6",
         ]);
 
-        User::create([]);
+        user::create([
+            "username" => $req->username,
+            "password" => $req->password,
+            "email" => $req->email,
+            "role" => false,
+        ]);
+        session()->flash("registeration", "please login to access to your Account");
+        return redirect("/login");
+    }
+
+    //login logic
+
+    public function login(){
+        return view("auth.login");
+    }
+
+    public function loginPost(Request $req){
+        $attributes = $req->validate([
+            "email" => ["filled", "required"],
+            "password" => "filled|required|min:6",
+        ]);
+        if(auth()->attempt($attributes)){
+            return redirect("/Dashboard");
+        }else{
+            return back()->withErrors(["message" => "invalide email/password"]);
+        }
+    
     }
 }

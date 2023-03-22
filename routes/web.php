@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get("/", [Authentification::class, "login"]);
 Route::prefix("/")->group(function(){
     Route::get("/register", [Authentification::class, "register"]);
     Route::post("/register", [Authentification::class, "registerPost"]);
+    Route::post("/login", [Authentification::class, "loginPost"]);
 });
 Route::prefix("Dashboard")->group(function () {
     Route::get("/", [adminController::class, 'index']);
