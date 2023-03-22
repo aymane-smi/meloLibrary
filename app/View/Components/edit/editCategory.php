@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\edit;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class editArtist extends Component
+class editCategory extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class editArtist extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.editArtist');
+        return view('components.edit.editCategory');
     }
 }

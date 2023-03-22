@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\utilityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post("/addArtist", [adminController::class, "addArtist"]);
+Route::get("/getArtist/{id}", [adminController::class, "getArtist"]);
+Route::get("/getCatgeory/{id}", [adminController::class, "getCatgeory"]);
+Route::post("/updateArtist", [adminController::class, "updateArtist"]);
+Route::post("/updateCategory", [adminController::class, "updateCategory"]);
+Route::get("/randomColor", [utilityController::class, "randomColor"]);
+Route::post("/addCategory", [adminController::class, "addCatgeory"]);

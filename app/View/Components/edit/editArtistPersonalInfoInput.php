@@ -1,21 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\edit;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class category extends Component
+class editArtistPersonalInfoInput extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $category;
-    public function __construct($category)
+    public function __construct()
     {
         //
-        $this->category = $category;
     }
 
     /**
@@ -23,6 +21,6 @@ class category extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.category');
+        return view('components.edit.editArtistPersonalInfoInput');
     }
 }

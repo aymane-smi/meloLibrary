@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
+use App\Http\Requests\MultipartFormRequest;
 
 class adminController extends Controller
 {
@@ -91,13 +92,45 @@ class adminController extends Controller
     public function showCategory($id)
     {
         $category = category::find($id);
-        return view("admin.category", $category);
+        return response()->json([
+            "Category" => category::find($id),
+        ], 200);
+    }
+
+    public function addCatgeory(Request $req){
+        $req->validate([
+            "name" => "filled|required",
+        ]);
+        category::create([
+            "name" => $req->name,
+            "selected" => 0,
+        ]);
+        return response()->json([
+            "message" => "category created",
+        ], 200);
+    }
+
+    public function deleteCategory($id){
+        category::find($id)->delete();
+        return redirect("/Dashboard/categories");
     }
 
     public function showCategories()
     {
-        $categories = category::all()->paginate(10);
-        return view("admin.categories", $categories);
+        $categories = category::all();
+        return view("admin.showCategories", ["categories" => $categories, "categories_nbr" => category::count()]);
+    }
+
+    public function updateCategory(Request $req){
+        $req->validate([
+            "name" => "filled|required",
+        ]);
+        $tmp = category::find($req->id_edit);
+        $tmp->name = $req->name;
+        $tmp->save();
+        return response()->json([
+            "message" => "category updated",
+        ], 200);
     }
 
     //handle artist logic
@@ -120,24 +153,29 @@ class adminController extends Controller
     }
 
     public function addArtist(Request $req){
-        $validate = $req->validate([
+        $req->validate([
             "name" => "filled|required",
             "country" => "filled|required",
             "birthday" => "date_format:Y-m-d|required",
             "artist_image" => "image|required",
-            //"band" => "integer",
+            "band" => "integer",
         ]);
         $name = now()->timestamp . "_" . $req->artist_image->getClientOriginalName();
         $req->artist_image->storeAs('public/artists', $name);
-        artist::create([
+        $created_artist = artist::create([
             "name" => $req->name,
             "country" => $req->country,
             "birthday" => $req->birthday,
             "image" => $name,
         ]);
+        $created_artist->bands()->attach($req->band);
         return response()->json([
             "message" => "artist created",
         ], 200);
+    }
+
+    public function getArtist($id){
+        return response()->json(["artist" => artist::find($id), "bands" => band::all()], 200);
     }
 
     public function deleteArtist($id){
@@ -145,6 +183,30 @@ class adminController extends Controller
         Storage::delete("artists/".$tmp->image_artist);
         $tmp->delete();
         return redirect("/Dashboard/artists");
+    }
+
+    public function updateArtist(Request $req){
+        $req->validate([
+            "name" => "filled|required",
+            "country" => "filled|required",
+            "birthday" => "date_format:Y-m-d|required",
+            "artist_image" => "image",
+            "band" => "integer",
+        ]);
+        $tmp = artist::find($req->id_edit);
+        if($req->file("artist_image")){
+            $name = now()->timestamp . "_" . $req->artist_image->getClientOriginalName();
+            $req->artist_image->storeAs('public/artists', $name);
+            Storage::delete("public/artists/".$tmp->image);
+            $tmp->image = $name;
+        }
+        $tmp->name = $req->name;
+        $tmp->country = $req->country;
+        $tmp->birthday = $req->birthday;
+        $tmp->save();
+        return response()->json([
+            "message" => "artist updated",
+        ], 200);
     }
 
     //handle band logic

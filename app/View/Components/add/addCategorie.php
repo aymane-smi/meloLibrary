@@ -1,24 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\add;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class editArtistBand extends Component
+class addCategorie extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $bands;
-    public $id;
-    public function __construct($bands, $id)
+    public function __construct()
     {
         //
-        $this->bands = $bands;
-
-        $this->id = $id;
     }
 
     /**
@@ -26,6 +21,6 @@ class editArtistBand extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.editArtistBand');
+        return view('components.add.addCategorie');
     }
 }

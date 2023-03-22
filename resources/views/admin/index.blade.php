@@ -5,4 +5,5 @@
     <x-categories :categoriesNbr="$results['created_categories']" :categories="$results['top_categories']" />
     <x-artists :artistsNbr="$results['created_artists']" :artists="$results['top_artists']" :page="false"/>
 </div>
+@vite('resources/js/categories.js');
 <x-footer />
