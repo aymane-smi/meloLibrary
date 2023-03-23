@@ -21,9 +21,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::post("/addArtist", [adminController::class, "addArtist"]);
+Route::get("/getBand/{id}", [adminController::class, "getBand"]);
 Route::get("/getArtist/{id}", [adminController::class, "getArtist"]);
-Route::get("/getCatgeory/{id}", [adminController::class, "getCatgeory"]);
+Route::get("/getCategory/{id}", [adminController::class, "showCategory"]);
+Route::get("/randomColor", [utilityController::class, "randomColor"]);
 Route::post("/updateArtist", [adminController::class, "updateArtist"]);
 Route::post("/updateCategory", [adminController::class, "updateCategory"]);
-Route::get("/randomColor", [utilityController::class, "randomColor"]);
 Route::post("/addCategory", [adminController::class, "addCatgeory"]);
+Route::post("/addBand", [adminController::class, "addBand"]);
+Route::post("/updateBand", [adminController::class, "updateBand"]);

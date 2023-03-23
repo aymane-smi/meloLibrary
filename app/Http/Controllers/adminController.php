@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\File;
 use App\Http\Requests\MultipartFormRequest;
+use Illuminate\Validation\Rule;
 
 class adminController extends Controller
 {
@@ -226,7 +227,58 @@ class adminController extends Controller
 
     public function showBands()
     {
-        $band = band::all()->paginate(10);
-        return view("admins.bands", $band);
+        $band = band::all();
+        return view("admin.showBands", ["bands" => $band, "bands_nbr" => band::count()]);
+    }
+
+    public function addBand(Request $req){
+        $req->validate([
+            "name" => ["filled", "required", Rule::unique("band", "name")],
+            "country" => "filled|required",
+            "creationDate" => "filled|required|date_format:Y-m-d",
+            "band_image" => "image|required",
+        ]);
+        $name = now()->timestamp . "_" . $req->band_image->getClientOriginalName();
+        $req->band_image->storeAs('public/bands', $name);
+        band::create([
+            "name" => $req->name,
+            "country" => $req->country,
+            "creation_date" => $req->creationDate,
+            "image" => $name,
+        ]);
+        return response()->json(["message" => "band created"], 200);
+    }
+
+    public function getBand($id){
+        return response()->json(["band" => band::find($id)], 200);
+    }
+
+    public function updateBand(Request $req){
+        $req->validate([
+            "name" => ["filled","required", Rule::unique("band", "name")],
+            "country" => "filled|required",
+            "creationDate" => "date_format:Y-m-d|required",
+            "artist_image" => "image",
+        ]);
+        $tmp = band::find($req->id_edit);
+        if($req->file("band_image")){
+            $name = now()->timestamp . "_" . $req->band_image->getClientOriginalName();
+            $req->artist_image->storeAs('public/bands', $name);
+            Storage::delete("public/bands/".$tmp->image);
+            $tmp->image = $name;
+        }
+        $tmp->name = $req->name;
+        $tmp->country = $req->country;
+        $tmp->creation_date = $req->creationDate;
+        $tmp->save();
+        return response()->json([
+            "message" => "artist updated",
+        ], 200);
+    }
+    public function deleteBand($id){
+        $tmp = band::find($id);
+        Storage::delete("bands/".$tmp->image);
+        $tmp->delete();
+        return redirect("/Dashboard/bands");
     }
 }

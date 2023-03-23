@@ -13,6 +13,6 @@
         @endforeach
     </div>
 </div>
-@Vite("resources/js/addCategory.js")
-@Vite("resources/js/editCategory.js")
+@vite("resources/js/editCategory.js")
+@vite("resources/js/addCategory.js")
 <x-footer />

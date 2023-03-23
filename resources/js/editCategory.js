@@ -31,6 +31,7 @@ open_edit_btns.forEach((open_edit)=>{
         name_edit.value=data.Category.name;
         editCategory_model.classList.remove("hidden");
         editCategory_model.classList.add("flex");
+        return false;
     });
 })
 

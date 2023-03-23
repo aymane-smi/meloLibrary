@@ -6,6 +6,8 @@
         <a href="/Dashboard/categories" class="text-white pr-2">show all</a>
     </div>
     <div class="mt-4">
-        <x-category :category="null"/>
+        @foreach ($categories as $category)
+            <x-category :category="$category"/>
+        @endforeach
     </div>
 </div>

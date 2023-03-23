@@ -8,15 +8,15 @@
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-solid fa-house"></i>Home
         </a>
-        <a href="/Dashboard/add-song"
+        <a href="/Dashboard/songs"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-solid fa-music"></i> songs
         </a>
-        <a href="/Dashboard/add-category"
+        <a href="/Dashboard/categories"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-regular fa-rectangle-list"></i> categories
         </a>
-        <a href="/Dashboard/add-band"
+        <a href="/Dashboard/bands"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-solid fa-people-group"></i> bands
         </a>

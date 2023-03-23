@@ -11,6 +11,8 @@ class band extends Model
 
     protected $table = "band";
 
+    protected $guarded = [];
+
     public function members()
     {
         return $this->hasMany(members::class);

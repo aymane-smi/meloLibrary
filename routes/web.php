@@ -22,8 +22,10 @@ Route::prefix("/")->group(function(){
 });
 Route::prefix("Dashboard")->group(function () {
     Route::get("/", [adminController::class, 'index']);
+    Route::get("/bands", [adminController::class, "showBands"]);
     Route::get("/artists", [adminController::class, "showArtists"]);
     Route::delete("/delete/{id}", [adminController::class, "deleteArtist"]);
     Route::get("/categories", [adminController::class, "showCategories"]);
     Route::delete("/deleteCategory/{id}", [adminController::class, "deleteCategory"]);
+    Route::delete("/deleteBand/{id}", [adminController::class, "deleteBand"]);
 });
