@@ -15,4 +15,5 @@
 </div>
 @vite("resources/js/editCategory.js")
 @vite("resources/js/addCategory.js")
+@vite("resources/js/categories.js")
 <x-footer />

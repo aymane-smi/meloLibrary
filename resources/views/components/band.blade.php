@@ -13,5 +13,6 @@
         class="w-[180px] h-[180px] rounded-[10px]" />
     <div class="flex justify-between items-center w-full mt-2">
         <p class="font-semibold text-white text-[15px]">{{ $band->name }}</p>
+        <p class="addMember_btn cursor-pointer font-semibold text-white text-[12px] underline text-blue-500" id="{{$band->id}}">add member</p>
     </div>
 </a>

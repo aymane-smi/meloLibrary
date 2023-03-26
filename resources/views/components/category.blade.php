@@ -10,7 +10,7 @@
         </button>
     </form>
     <div
-        class="w-[180px] h-[180px] rounded-[10px] category-bg">
+        class="w-[180px] h-[180px] rounded-[10px] category-bg bg-[{{'#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT)}}]">
     </div>
     <div class="flex justify-between items-center w-full mt-2">
         <p class="font-semibold text-white text-[15px]">{{$category->name}}</p>

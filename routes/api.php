@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\bandController;
+use App\Http\Controllers\songController;
 use App\Http\Controllers\utilityController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +32,5 @@ Route::post("/updateCategory", [adminController::class, "updateCategory"]);
 Route::post("/addCategory", [adminController::class, "addCatgeory"]);
 Route::post("/addBand", [adminController::class, "addBand"]);
 Route::post("/updateBand", [adminController::class, "updateBand"]);
+Route::post("/addMember", [bandController::class, "addMember"]);
+Route::post("/addSong", [songController::class, "addSong"]);

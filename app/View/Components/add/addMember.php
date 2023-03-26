@@ -6,17 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class song extends Component
+class addMember extends Component
 {
     /**
      * Create a new component instance.
      */
-
-     public $song;
-    public function __construct($song)
+    public function __construct()
     {
         //
-        $this->song = $song;
     }
 
     /**
@@ -24,6 +21,6 @@ class song extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.song');
+        return view('components.add.addMember');
     }
 }

@@ -20,9 +20,13 @@
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-solid fa-people-group"></i> bands
         </a>
-        <a href="/Dashboard/add-members"
+        <a href="/Dashboard/artists"
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
-            <i class="fa-solid fa-person"></i> members
+            <i class="fa-solid fa-person"></i> artists
+        </a>
+        <a href="/Dashboard/favorites"
+            class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
+            <i class="fa-solid fa-bookmark"></i> favorites
         </a>
     </div>
     <div class="text-[#3E4143] flex flex-col justify-center items-start gap-10 text-lg w-full pl-3">

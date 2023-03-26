@@ -1,6 +1,7 @@
 <x-header title="Bands"/>
 <x-admin_sidebar />
 <x-add.addBand />
+<x-add.addMember />
 <x-edit.editBand />
 <div class="flex flex-col mt-8 w-full pl-3">
     <div class="flex justify-between items-center">
@@ -15,4 +16,5 @@
 </div>
 @vite('resources/js/editBand.js')
 @vite('resources/js/addBand.js')
+@vite("resources/js/addMember.js")
 <x-footer />

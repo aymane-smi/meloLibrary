@@ -1,4 +1,4 @@
-window.onload(()=>{
+window.onload = ()=>{
     const categories = document.querySelectorAll(".category-bg");
 
     for(let category of categories){
@@ -7,4 +7,4 @@ window.onload(()=>{
             category.classList.add(`bg-[${data.code}]`);
         });
     }
-})
+}
