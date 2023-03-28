@@ -6,6 +6,7 @@ const volume = document.querySelector("#volume");
 const volume_icon = document.querySelector("#volume-icon");
 let state = false;
 music_range.max = audio.duration;
+music_range.value = 0;
 songPlay.addEventListener("click", (e)=>{
     if(!state){
         audio.play();
@@ -25,7 +26,8 @@ audio.addEventListener("timeupdate", (e)=>{
 
 music_range.addEventListener("input", (e)=>{
     audio.currentTime = e.target.value;
-    audio.play();
+    if(state)
+        audio.play();
 });
 
 volume.addEventListener("input", (e)=>{

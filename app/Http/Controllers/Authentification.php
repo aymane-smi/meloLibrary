@@ -27,7 +27,7 @@ class Authentification extends Controller
             "role" => false,
         ]);
         session()->flash("registeration", "please login to access to your Account");
-        return redirect("/login");
+        return redirect("/");
     }
 
     //login logic

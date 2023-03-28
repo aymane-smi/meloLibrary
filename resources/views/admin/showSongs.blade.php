@@ -1,8 +1,6 @@
 <x-header title="Songs"/>
 <x-admin_sidebar />
-{{-- <x-addArtist />
-<x-edit.editArtist /> --}}
-<x-add.addSong />
+<x-add.addSong :bands="$bands" :artists="$artists"/>
 <div class="flex flex-col mt-8 w-full pl-3">
     <div class="flex justify-between items-center">
         <h2 class="text-[30px] text-white">Available Songs({{ $songs_nbr }}) </h2>
@@ -14,7 +12,5 @@
         @endforeach
     </div>
 </div>
-{{-- @vite('resources/js/editArtist.js')
-@vite('resources/js/addArtist.js') --}}
 @vite("resources/js/addSong.js");
 <x-footer />

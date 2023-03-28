@@ -1,4 +1,4 @@
-<a class="relative rounded-[10px] p-2 overflow-hidden w-fit flex flex-col justify-center items-start bg-[#1B1E21]">
+<div class="relative rounded-[10px] p-2 overflow-hidden w-fit flex flex-col justify-center items-start bg-[#1B1E21]">
     <div class="absolute top-3 right-3 editCategory_btn" id="{{$category->id}}">
         <i class="fa-solid fa-pen edit-category rounded-md hover:bg-white hover:text-black text-transparent p-2"></i>
     </div>
@@ -10,9 +10,9 @@
         </button>
     </form>
     <div
-        class="w-[180px] h-[180px] rounded-[10px] category-bg bg-[{{'#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT)}}]">
+        class="w-[180px] h-[180px] rounded-[10px] category-bg" style="background-color: {{'#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT)}}">
     </div>
     <div class="flex justify-between items-center w-full mt-2">
-        <p class="font-semibold text-white text-[15px]">{{$category->name}}</p>
+        <a href="/Dashboard/category/{{$category->id}}" class="font-semibold text-white text-[15px]">{{$category->name}}</a>
     </div>
-</a>
+</div>

@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\artistController;
 use App\Http\Controllers\Authentification;
+use App\Http\Controllers\bandController;
+use App\Http\Controllers\categoryController;
+use App\Http\Controllers\memberController;
 use App\Http\Controllers\songController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,8 +32,12 @@ Route::prefix("Dashboard")->group(function () {
     Route::get("/songs", [songController::class, "showSongs"]);
     Route::get("/categories", [adminController::class, "showCategories"]);
     Route::get("/song/{id}", [songController::class, "showSong"]);
+    Route::get("/artist/{id}", [artistController::class, "showArtist"]);
+    Route::get("/band/{id}", [bandController::class, "showBand"]);
+    Route::get("/category/{id}", [categoryController::class, "showCategory"]);
     Route::delete("/deleteCategory/{id}", [adminController::class, "deleteCategory"]);
     Route::delete("/deleteBand/{id}", [adminController::class, "deleteBand"]);
     Route::delete("/deleteSong/{id}", [songController::class, "deleteSong"]);
     Route::delete("/delete/{id}", [adminController::class, "deleteArtist"]);
+    Route::delete("/deleteMember/{id}", [memberController::class, "deleteMember"]);
 });

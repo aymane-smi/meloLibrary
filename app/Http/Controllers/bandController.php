@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\band;
 use App\Models\Members;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -22,5 +23,16 @@ class bandController extends Controller
         return response()->json([
             "message" => "member created",
         ], 200);
+    }
+
+    public function showBand($id){
+        $tmp = band::find($id);
+        $result = [
+            "band" => $tmp,
+            "members" => $tmp->members,
+            "songs" => $tmp->songs,
+        ];
+
+        return view("admin.showBand", $result);
     }
 }

@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class writers extends Model
+class MusicArtist extends Model
 {
     use HasFactory;
+    protected $table = "artist_music";
+
+    public $timestamps = false;
 
     protected $guarded = [];
-
-    public $table = "writer";
-
-    public $timestamp = false;
 }

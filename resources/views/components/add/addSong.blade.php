@@ -6,11 +6,21 @@
         <form class="p-4" enctype="multipart/form-data" id="addSong_form">
             @csrf
             <x-songPersonalInfoInput />
-            <p>bands</p>
-            <select class="p-3 w-full bg-white border-3 rounded-md text-black text-center border-[#15181b] outline-none mt-3" name="band">
-            </select>
             <p>artists</p>
-            <select class="p-3 w-full bg-white border-3 rounded-md text-black text-center border-[#15181b] outline-none mt-3" name="artist">
+            <select multiple class="h-[50px] overflow-y-scoll p-3 w-full bg-white border-3 rounded-md text-black text-center border-[#15181b] outline-none mt-3" name="artists[]">
+                @foreach($artists as $artist)
+                    <option value="{{$artist->id}}" class="bg-white">
+                        {{$artist->name}}
+                    </option>
+                @endforeach
+            </select>
+            <p>bands</p>
+            <select multiple class="h-[50px] overflow-y-scoll p-3 w-full bg-white border-3 rounded-md text-black text-center border-[#15181b] outline-none mt-3" name="bands[]">
+                @foreach($bands as $band)
+                    <option value="{{$band->id}}" class="bg-white">
+                        {{$band->name}}
+                    </option>
+                @endforeach
             </select>
             <button class="w-full p-2 mt-3 rounded-md bg-green-500 text-white">add new song</button>
         </form>

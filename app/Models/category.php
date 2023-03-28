@@ -12,4 +12,8 @@ class category extends Model
     protected $table = "category";
 
     protected $guarded = [];
+
+    public function songs(){
+        return $this->hasMany(music::class);
+    }
 }

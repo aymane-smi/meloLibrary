@@ -35,7 +35,6 @@ class adminController extends Controller
                 ->limit(4)
                 ->get(),
         ];
-        //dd($result);
         return view("admin.index", ["results" => $result]);
     }
 
