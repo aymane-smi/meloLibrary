@@ -1,5 +1,5 @@
 <a class="relative rounded-[10px] p-2 overflow-hidden w-fit flex flex-col justify-center items-start bg-[#1B1E21]"
-    href="/Dashboard/song/{{ $song->id }}">
+    href="/Dashboard/@auth{{auth()->user()->role === 1 ? "song" : "songUp"}}@endauth/{{ $song->id }}">
     <form class="absolute top-3 left-3" action="/Dashboard/deleteSong/{{ $song->id }}" method="POST">
         @csrf
         @method("DELETE")

@@ -14,6 +14,7 @@ class writerController extends Controller
         ]);
         writers::create([
             "full_name" => $req->name,
+            "music_id" => $req->music_id,
         ]);
         return response()->json([
             "message" => "writer created",

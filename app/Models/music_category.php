@@ -9,8 +9,12 @@ class music_category extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
+    public $table = "category_music";
+
     public function categories()
     {
-        return $this->belongsToMany(Category::class, "category_music");
+        return $this->hasMany(Category::class);
     }
 }

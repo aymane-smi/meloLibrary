@@ -33,6 +33,6 @@ class music extends Model
 
     public function writers()
     {
-        return $this->belongsToMany(writer::class);
+        return $this->hasMany(writers::class);
     }
 }

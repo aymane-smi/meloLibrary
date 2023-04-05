@@ -5,7 +5,7 @@
         </h2>
         <a href="/Dashboard/artists" class="text-white pr-2">show all</a>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 flex justify-start items-center gap-3 flex-wrap">
         @foreach($artists as $artist)
             <x-artist :artist="$artist"/>
         @endforeach

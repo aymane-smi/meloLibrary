@@ -21,5 +21,12 @@
         <a href="/Dashboard/song/1">title</a>
         <p>duration</p>
     </div>
+    @foreach ($songs as $song)
+        <div class="flex justify-between items-center p-10 text-white hover:bg-black/30 mt-3">
+            <img class="h-[40px] w-[40px] rounded-md" src="{{ asset('storage/songs/images/' . $song->image) }}"/>
+            <a href="/Dashboard/song/{{$song->id}}">{{$song->title}}</a>
+            <p>{{substr($song->duration, 0, -3)}}</p>
+        </div>
+    @endforeach
 </div>
 <x-footer />

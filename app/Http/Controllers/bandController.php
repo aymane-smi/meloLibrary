@@ -35,4 +35,11 @@ class bandController extends Controller
 
         return view("admin.showBand", $result);
     }
+
+    public function bandUp($id){
+        $tmp = band::find($id);
+        $tmp->selected++;
+        $tmp->save();
+        return redirect("/Dashboard/band/".$id);
+    }
 }

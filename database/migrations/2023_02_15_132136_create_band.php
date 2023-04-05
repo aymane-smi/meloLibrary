@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("image");
             $table->string("name");
             $table->string("country");
+            $table->integer("selected")->default(0);
             $table->date("creation_date");
             $table->timestamps();
         });

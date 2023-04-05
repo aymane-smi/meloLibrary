@@ -42,10 +42,16 @@ class Authentification extends Controller
             "password" => "filled|required|min:6",
         ]);
         if(auth()->attempt($attributes)){
+            session()->regenerate();
             return redirect("/Dashboard");
         }else{
             return back()->withErrors(["message" => "invalide email/password"]);
         }
     
+    }
+
+    public function logout(){
+        auth()->logout();
+        return redirect("/");
     }
 }

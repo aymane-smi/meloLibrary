@@ -5,9 +5,8 @@
         </h2>
         <a href="/Dashboard/songs" class="text-white pr-2">show all</a>
     </div>
-    <div class="mt-4">
+    <div class="mt-4 flex justify-start items-center gap-3 flex-wrap">
         @foreach ($songs as $song)
-        <p class="text-white">test</p>
             <x-song :song="$song"/>
         @endforeach
     </div>

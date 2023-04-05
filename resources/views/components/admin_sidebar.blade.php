@@ -34,8 +34,8 @@
             class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in">
             <i class="fa-solid fa-right-from-bracket"></i> logout
         </a>
-        <a
+        {{-- <a
             href="/Dashboard/settings"class="flex justify-center items-center gap-5 hover:text-blue-300 transition duration-150 ease-out hover:ease-in"><i
-                class="fa-solid fa-gear"></i> settings</a>
+                class="fa-solid fa-gear"></i> settings</a> --}}
     </div>
 </div>

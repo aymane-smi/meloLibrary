@@ -14,6 +14,6 @@ class category extends Model
     protected $guarded = [];
 
     public function songs(){
-        return $this->hasMany(music::class);
+        return $this->belongsToMany(music::class, "category_music", 'music_id', 'category_id');
     }
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("country");
             $table->date("birthday");
+            $table->integer("selected")->default(0);
             $table->timestamps();
         });
     }

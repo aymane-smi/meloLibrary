@@ -4,13 +4,39 @@ const timer = document.querySelector(".timer");
 const music_range = document.querySelector("#music_range");
 const volume = document.querySelector("#volume");
 const volume_icon = document.querySelector("#volume-icon");
+const player = document.querySelector("#player");
+const player_state = document.querySelector(".player-state");
+const player_icon = document.querySelector("#player-icon");
 let state = false;
 music_range.max = audio.duration;
 music_range.value = 0;
+
+player_state.addEventListener("click", ()=>{
+    if(!state){
+        audio.play();
+        player_icon.classList.remove(...player_icon.classList);
+        player_state.classList.remove(...player_state.classList);
+        player_state.classList.add(...["fa-regular","fa-circle-pause","text-white","text-[20px]","player-state"])
+        player_icon.classList.add(...["fa-solid","fa-pause","text-[20px]"]);
+        state = !state;
+    }else{
+        state = !state;
+        audio.pause();
+        player_icon.classList.remove(...player_icon.classList);
+        player_state.classList.remove(...player_state.classList);
+        player_state.classList.add(...["fa-regular","fa-circle-play","text-white","text-[20px]","player-state"])
+        player_icon.classList.add(...["fa-solid","fa-play","text-[20px]"]);
+
+    }
+});
 songPlay.addEventListener("click", (e)=>{
     if(!state){
         audio.play();
+        player_state.classList.remove(...player_state.classList);
+        player_state.classList.add(...["fa-regular","fa-circle-pause","text-white","text-[20px]","player-state"])
         state = !state;
+        player.classList.remove("hidden");
+        player.classList.add("flex");
     }
     else{
         audio.pause();

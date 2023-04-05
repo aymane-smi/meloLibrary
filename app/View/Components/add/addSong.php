@@ -13,11 +13,13 @@ class addSong extends Component
      */
     public $artists;
     public $bands;
-    public function __construct($artists, $bands)
+    public $categories;
+    public function __construct($artists, $bands, $categories)
     {
         //
         $this->artists = $artists;
         $this->bands = $bands;
+        $this->categories = $categories;
     }
 
     /**

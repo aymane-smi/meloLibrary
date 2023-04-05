@@ -10,6 +10,7 @@
                 <input type="text" name="name" id="name" class="rounded-md mt-2 bg-transparent border-4 p-2 border-[#15181b] outline-none"/>
                 <p class="text-[10px] text-red-500" id="name_add_err"></p>
             </div>
+            <input type="hidden" name="music_id" value="{{$id}}"/>
             <button class="w-full p-2 mt-3 rounded-md bg-green-500 text-white">add new writer</button>
         </form>
     </div>

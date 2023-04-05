@@ -24,16 +24,9 @@ class adminController extends Controller
             "created_artists" => artist::count(),
             "created_band" => band::count(),
             "created_categories" => category::count(),
-            "top_songs" => music::select('music.*')->join('client_rate', 'music.id', '=', 'client_rate.music_id')
-                ->orderBy("client_rate.rating", "desc")
-                ->limit(4)
-                ->get(),
-            "top_categories" => category::all()->sortByDesc("selected"),
-            "top_artists" => artist::select("artist.*")->join('artist_music', 'artist.id', '=', 'artist_music.artist_id')
-                ->join("client_rate", 'client_rate.music_id', '=', 'artist_music.music_id')
-                ->orderBy("client_rate.rating", "desc")
-                ->limit(4)
-                ->get(),
+            "top_songs" => music::orderBy("selected")->take(4)->get(),
+            "top_categories" => category::orderBy("selected")->take(4)->get(),
+            "top_artists" => artist::orderBy("selected")->take(4)->get(),
         ];
         return view("admin.index", ["results" => $result]);
     }

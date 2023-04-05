@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->integer("selected");
+            $table->integer("selected")->default(0);;
             $table->timestamps();
         });
     }

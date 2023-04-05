@@ -12,9 +12,15 @@ class categoryController extends Controller
         $tmp = category::find($id);
         $result = [
             "category" => $tmp,
-            "songs" => $tmp->songs(),
+            "songs" => $tmp->songs,
         ];
 
         return view("admin.showCategory", $result);
+    }
+    public function categoryUp($id){
+        $tmp = category::find($id);
+        $tmp->selected++;
+        $tmp->save();
+        return redirect("/Dashboard/category/".$id);
     }
 }
